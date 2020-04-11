@@ -1,14 +1,12 @@
-module "sql-database" {
-  source              = "Azure/database/azurerm"
-  resource_group_name = "tuffner01"
-  location            = "westus"
-  db_name             = "tuffnerdatabase"
-  sql_admin_username  = "ahead"
-  sql_password        = "Raleigh2019!"
+# Configure the Azure Provider
+provider "azurerm" {
+  # whilst the `version` attribute is optional, we recommend pinning to a given version of the Provider
+  version = "=2.0.0"
+  features {}
+}
 
-  tags             = {
-                        environment = "dev"
-                        costcenter  = "it"
-                      }
-
+# Create a resource group
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
+  location = "West Europe"
 }
